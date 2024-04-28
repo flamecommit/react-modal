@@ -14,6 +14,7 @@ interface IProps {
 export default function Modal({ children, onBackgroundClick }: IProps) {
   const [realShow, setRealShow] = useState<boolean>(false);
   const childRef = useRef<HTMLDivElement>(null);
+  const [isClient, setIsClient] = useState<boolean>(false);
 
   useEffect(() => {
     setTimeout(() => setRealShow(true));
@@ -33,16 +34,24 @@ export default function Modal({ children, onBackgroundClick }: IProps) {
     };
   }, []);
 
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
-    <Portal selector="body">
-      <div
-        className={`${NAME_SPACE}__background${realShow ? ' react-modal__active' : ''}`}
-        onClick={backgroundClickHandler}
-      >
-        <div ref={childRef} className={`react-modal__wrapper`}>
-          {children}
-        </div>
-      </div>
-    </Portal>
+    <>
+      {isClient && (
+        <Portal selector="body">
+          <div
+            className={`${NAME_SPACE}__background${realShow ? ' react-modal__active' : ''}`}
+            onClick={backgroundClickHandler}
+          >
+            <div ref={childRef} className={`react-modal__wrapper`}>
+              {children}
+            </div>
+          </div>
+        </Portal>
+      )}
+    </>
   );
 }
