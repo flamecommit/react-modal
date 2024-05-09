@@ -1,7 +1,7 @@
 ## 라이브러리 개요
 
 react-modal React 기반의 웹 애플리케이션에서 Modal UI를 사용하기 쉽게 제공하는 라이브러리입니다.
-  ​
+​
 
 ## 설치
 
@@ -37,11 +37,11 @@ import '@shinyongjun/react-modal/css';
 
 ## API 문서
 
-라이브러리의 주요 API들에 대한 문서를 [Docs](https://shinyongjun.gitbook.io/react-modal/)에서 확인할 수 있습니다.
+라이브러리의 주요 API들에 대한 문서를 [Docs](https://www.shinyongjun.com/library/react-modal/docs/Getting%20Started/Overview)에서 확인할 수 있습니다.
 
 ## 실제 사용 사례
 
-라이브러리의 실제 사용 예시는 [Demo](https://shinyongjun.com/library/react-modal)에서 확인할 수 있습니다.
+라이브러리의 실제 사용 예시는 [Demo](https://shinyongjun.com/library/react-modal/demo)에서 확인할 수 있습니다.
 ​
 
 ## 피드백 및 지원
