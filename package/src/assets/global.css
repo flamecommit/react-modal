@@ -1,4 +1,4 @@
-.react-modal__background {
+.react-modal__wrapper {
   position: fixed;
   z-index: 10001;
   inset: 0;
@@ -17,7 +17,7 @@ body.react-modal__body-active {
   overflow: hidden;
 }
 
-/* .react-modal__background {
+/* .react-modal__wrapper {
   background-color: rgba(0, 0, 0, 0);
   transition: background-color 300ms;
   .react-modal__modalbox {

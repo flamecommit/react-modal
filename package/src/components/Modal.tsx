@@ -8,10 +8,15 @@ import Portal from './Portal';
 
 interface IProps {
   children: ReactElement;
+  className?: string;
   onBackgroundClick?: () => void;
 }
 
-export default function Modal({ children, onBackgroundClick }: IProps) {
+export default function Modal({
+  children,
+  className = '',
+  onBackgroundClick,
+}: IProps) {
   const [realShow, setRealShow] = useState<boolean>(false);
   const [isClient, setIsClient] = useState<boolean>(false);
 
@@ -40,7 +45,7 @@ export default function Modal({ children, onBackgroundClick }: IProps) {
       {isClient && (
         <Portal selector="body">
           <div
-            className={`${NAME_SPACE}__background`}
+            className={`${NAME_SPACE}__wrapper${className ? ` ${className}` : ''}`}
             data-active={realShow}
             onClick={backgroundClickHandler}
           >
