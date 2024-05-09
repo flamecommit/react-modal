@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 'use client';
 
-import { MouseEvent, ReactElement, useEffect, useRef, useState } from 'react';
+import { MouseEvent, ReactElement, useEffect, useState } from 'react';
 import { NAME_SPACE } from '../constants/core';
 import Portal from './Portal';
 
@@ -13,7 +13,6 @@ interface IProps {
 
 export default function Modal({ children, onBackgroundClick }: IProps) {
   const [realShow, setRealShow] = useState<boolean>(false);
-  const childRef = useRef<HTMLDivElement>(null);
   const [isClient, setIsClient] = useState<boolean>(false);
 
   useEffect(() => {
@@ -29,9 +28,7 @@ export default function Modal({ children, onBackgroundClick }: IProps) {
   useEffect(() => {
     document.body.classList.add('react-modal__body-active');
 
-    return function cleanup() {
-      document.body.classList.remove('react-modal__body-active');
-    };
+    return () => document.body.classList.remove('react-modal__body-active');
   }, []);
 
   useEffect(() => {
@@ -43,12 +40,11 @@ export default function Modal({ children, onBackgroundClick }: IProps) {
       {isClient && (
         <Portal selector="body">
           <div
-            className={`${NAME_SPACE}__background${realShow ? ' react-modal__active' : ''}`}
+            className={`${NAME_SPACE}__background`}
+            data-active={realShow}
             onClick={backgroundClickHandler}
           >
-            <div ref={childRef} className={`react-modal__wrapper`}>
-              {children}
-            </div>
+            <div className={`${NAME_SPACE}__modalbox`}>{children}</div>
           </div>
         </Portal>
       )}
