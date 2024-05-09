@@ -20,10 +20,6 @@ export default function Modal({
   const [realShow, setRealShow] = useState<boolean>(false);
   const [isClient, setIsClient] = useState<boolean>(false);
 
-  useEffect(() => {
-    setTimeout(() => setRealShow(true));
-  }, []);
-
   const backgroundClickHandler = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget && onBackgroundClick) {
       onBackgroundClick();
@@ -38,6 +34,10 @@ export default function Modal({
 
   useEffect(() => {
     setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => setRealShow(true), 30);
   }, []);
 
   return (
